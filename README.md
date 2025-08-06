@@ -29,6 +29,9 @@ macOS: https://www.postgresql.org/download/macosx/
 
 ```poetry install```
 
+---
+Добавьте в корневую папку файл .env, и заполните его своими данными (пример заполнения: файл .env.example)
+
 # Запуск
 
 Для запуска напишите в терминал:
