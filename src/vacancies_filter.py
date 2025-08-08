@@ -25,7 +25,8 @@ class VacancyFilter:
         :return: Список, содержащий id работодателей
         """
         # список всех id работодателей
-        employers_id_list = [employer['employer']['id'] for employer in self.__raw_vacancies]
+        employers_id_list = [employer['employer']['id'] for employer in self.__raw_vacancies
+                             if employer['employer'].get('id') is not None]
 
         return employers_id_list
 
@@ -68,6 +69,8 @@ class VacancyFilter:
         top_employers = []
         employers_id = self.__get_top_employers_id()
         for vacancy in self.__raw_vacancies:
+            if vacancy['employer'].get('id') is None:
+                continue
             for employer_id in employers_id:
                 if vacancy['employer']['id'] == employer_id:
                     top_employers.append(vacancy)
